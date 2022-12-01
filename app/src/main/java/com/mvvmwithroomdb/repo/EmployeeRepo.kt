@@ -8,20 +8,17 @@ import com.mvvmwithroomdb.database.EmployeeDao
 import com.mvvmwithroomdb.database.EmployeeDataBase
 
 class EmployeeRepo(private val dao: EmployeeDao) {
-    private val employees:LiveData<List<Employee>>
+    val employees:LiveData<List<Employee>>
     get() = dao.getEmployees()
      suspend fun insertEmployee(employee: Employee){
         Log.e("Insert: "," "+dao.insert(employee))
 
     }
     suspend fun updateEmployee(employee: Employee){
-
+        dao.update(employee)
     }
-    suspend fun deleteAllEmployee(employee: Employee){
-
-    }
-    suspend fun getAllEmployees()  {
-
+    suspend fun deleteEmployee(employee: Employee){
+        dao.delete(employee)
     }
     fun getEmployee(){
 

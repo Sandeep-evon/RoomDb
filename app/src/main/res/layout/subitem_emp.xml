@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="ref"
+            type="com.mvvmwithroomdb.database.Employee" />
+    </data>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtEmpId"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textStyle="normal"
+            android:text="@{ref.empId}"
+            android:textSize="16dp"/>
+        <TextView
+            android:id="@+id/txtEmpName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:textStyle="normal"
+            android:text="@{ref.empName}"
+            android:textSize="16dp"/>
+        <TextView
+            android:id="@+id/txtEmpEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="4dp"
+            android:textStyle="normal"
+            android:text="@{ref.empEmail}"
+            android:textSize="16dp"/>
+    </LinearLayout>
+</layout>

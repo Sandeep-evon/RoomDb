@@ -1,5 +1,6 @@
 package com.mvvmwithroomdb.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,34 +9,77 @@ import com.mvvmwithroomdb.repo.EmployeeRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class HomeViewModel(val repo: EmployeeRepo):ViewModel() {
-    val empId = MutableLiveData<String>("S101")
-    val empName = MutableLiveData<String>("Sandeep Saini")
-    val empEmail = MutableLiveData<String>("sandeep.myfindoc@gmail.com")
+class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
+    val empId = MutableLiveData<String>()
+    val empName = MutableLiveData<String>()
+    val empEmail = MutableLiveData<String>()
     val error = MutableLiveData<String>()
-    fun save(){
-        viewModelScope.launch(Dispatchers.IO) {
-            if(empId.value?.isNotEmpty() == true){
-                if(empName.value?.isNotEmpty() == true){
-                    if(empEmail.value?.isNotEmpty() == true){
-                        repo.insertEmployee(Employee(empId.value!!,empName.value!!,empEmail.value!!))
-                    }else
-                        error.value = "Please Enter Email."
-                }else
-                    error.value = "Please Enter Name."
-            }else
-                error.value = "Please Enter Id."
-        }
+    val employees: LiveData<List<Employee>>
+        get() = repo.employees
 
-        error.value = "Perform Insert Operation"
+    fun save() {
+
+        if (empId.value?.isNotEmpty() == true) {
+            if (empName.value?.isNotEmpty() == true) {
+                if (empEmail.value?.isNotEmpty() == true) {
+                    viewModelScope.launch(Dispatchers.IO) {
+                        repo.insertEmployee(
+                            Employee(
+                                empId.value!!,
+                                empName.value!!,
+                                empEmail.value!!
+                            )
+                        )
+                    }
+                } else
+                    error.value = "Please Enter Email."
+            } else
+                error.value = "Please Enter Name."
+        } else
+            error.value = "Please Enter Id."
     }
-    fun update(){
-        error.value = "Perform Update Operation"
+
+    fun update() {
+
+        if (empId.value?.isNotEmpty() == true) {
+            if (empName.value?.isNotEmpty() == true) {
+                if (empEmail.value?.isNotEmpty() == true) {
+                    viewModelScope.launch(Dispatchers.IO) {
+                        repo.updateEmployee(
+                            Employee(
+                                empId.value!!,
+                                empName.value!!,
+                                empEmail.value!!
+                            )
+                        )
+                    }
+                } else
+                    error.value = "Please Enter Email."
+            } else
+                error.value = "Please Enter Name."
+        } else
+            error.value = "Please Enter Id."
+
     }
-    fun delete(){
-        error.value = "Perform Delete Operation"
-    }
-    fun getAllEmployees(){
-        error.value = "Perform Get Operation"
+
+    fun delete() {
+        if (empId.value?.isNotEmpty() == true) {
+            if (empName.value?.isNotEmpty() == true) {
+                if (empEmail.value?.isNotEmpty() == true) {
+                    viewModelScope.launch(Dispatchers.IO) {
+                        repo.deleteEmployee(
+                            Employee(
+                                empId.value!!,
+                                empName.value!!,
+                                empEmail.value!!
+                            )
+                        )
+                    }
+                } else
+                    error.value = "Please Enter Email."
+            } else
+                error.value = "Please Enter Name."
+        } else
+            error.value = "Please Enter Id."
     }
 }

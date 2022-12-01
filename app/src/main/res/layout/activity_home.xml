@@ -98,6 +98,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:visibility="gone"
                 android:id="@+id/btnShow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -108,9 +109,37 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:text="ID"
+                android:textSize="18dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:text="Name"
+                android:textSize="18dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:textStyle="bold"
+                android:text="Email"
+                android:textSize="18dp"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/subscriber_recyclerView"
+            android:id="@+id/rvEmpList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp" />

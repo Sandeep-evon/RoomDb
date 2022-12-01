@@ -1,18 +1,19 @@
 package com.mvvmwithroomdb.database
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
 interface EmployeeDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(employee: Employee)
+    suspend fun insert(employee: Employee):Long
 
-    /*@Update
+    @Update
     suspend fun update(employee: Employee): Int
 
     @Delete
-    suspend fun delete(employee: Employee): Int*/
+    suspend fun delete(employee: Employee): Int
 
     @Query("select * from Employee_Record")
     fun getEmployees(): LiveData<List<Employee>>
