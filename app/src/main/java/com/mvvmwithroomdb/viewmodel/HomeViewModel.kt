@@ -8,6 +8,7 @@ import com.mvvmwithroomdb.database.Employee
 import com.mvvmwithroomdb.repo.EmployeeRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
     val empId = MutableLiveData<String>()
@@ -27,7 +28,8 @@ class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
                             Employee(
                                 empId.value!!,
                                 empName.value!!,
-                                empEmail.value!!
+                                empEmail.value!!,
+                                Date(System.currentTimeMillis())
                             )
                         )
                     }
@@ -49,7 +51,8 @@ class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
                             Employee(
                                 empId.value!!,
                                 empName.value!!,
-                                empEmail.value!!
+                                empEmail.value!!,
+                                Date(System.currentTimeMillis())
                             )
                         )
                     }
@@ -71,7 +74,8 @@ class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
                             Employee(
                                 empId.value!!,
                                 empName.value!!,
-                                empEmail.value!!
+                                empEmail.value!!,
+                                Date(System.currentTimeMillis())
                             )
                         )
                     }
