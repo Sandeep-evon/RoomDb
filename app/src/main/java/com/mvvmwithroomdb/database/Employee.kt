@@ -14,5 +14,5 @@ class Employee(
     val empName: String,
     @ColumnInfo(name = "Email")
     val empEmail: String,
-    val createdAt: Date
+    //val createdAt: Date
 )

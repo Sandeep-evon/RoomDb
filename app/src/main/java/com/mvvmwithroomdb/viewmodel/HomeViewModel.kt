@@ -28,8 +28,7 @@ class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
                             Employee(
                                 empId.value!!,
                                 empName.value!!,
-                                empEmail.value!!,
-                                Date(System.currentTimeMillis())
+                                empEmail.value!!
                             )
                         )
                     }
@@ -51,8 +50,7 @@ class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
                             Employee(
                                 empId.value!!,
                                 empName.value!!,
-                                empEmail.value!!,
-                                Date(System.currentTimeMillis())
+                                empEmail.value!!
                             )
                         )
                     }
@@ -74,8 +72,7 @@ class HomeViewModel(val repo: EmployeeRepo) : ViewModel() {
                             Employee(
                                 empId.value!!,
                                 empName.value!!,
-                                empEmail.value!!,
-                                Date(System.currentTimeMillis())
+                                empEmail.value!!
                             )
                         )
                     }
